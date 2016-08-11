@@ -1,38 +1,50 @@
 import React, { Component } from 'react';
-import { NICE, SUPER_NICE } from './colors';
+import {Header} from './Header';
 
-class Counter extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { counter: 0 };
-    this.interval = setInterval(() => this.tick(), 1000);
-  }
-
-  tick() {
-    this.setState({
-      counter: this.state.counter + this.props.increment
-    });
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
-
-  render() {
-    return (
-      <h1 style={{ color: this.props.color }}>
-        Counter ({this.props.increment}): {this.state.counter}
-      </h1>
-    );
-  }
+const section = {
+    borderLeft: "0.5px solid gray"
+  , borderRight: "0.5px solid gray"
 }
 
 export class App extends Component {
   render() {
     return (
       <div>
-        <Counter increment={1} color={NICE} />
-        <Counter increment={5} color={SUPER_NICE} />
+        <Header/>
+        <table>
+        
+          <thead>
+            <tr>
+              <td rowSpan="2" style={section}>Address</td>
+              <td rowSpan="2" style={section}>Client Status</td>
+              <td colSpan="3">Records on File</td>
+              <td rowSpan="2" style={section}>NYC DOB APP#</td>
+              <td colSpan="2" style={section}>Special Inspection Type</td>
+              <td colSpan="2" style={section}>Copies of Initial Reports On File Date</td>
+              <td rowSpan="2" style={section}>Date of Inspection</td>
+              <td rowSpan="2" style={section}>Inspector Name</td>
+              <td colSpan="2" style={section}>Type of Inspection</td>
+              <td rowSpan="2" style={section}>Item Inspected</td>
+              <td rowSpan="2" style={section}>Inspector Inspection Report on File</td>
+              <td rowSpan="2" style={section}>Inspection Results</td>
+              <td colSpan="2" style={section}>Copies of Final Reports on File</td>
+              <td rowSpan="2" style={section}>Job Signed off Date</td>
+            </tr>
+            <tr>
+              <td>Proposal</td>
+              <td>Engagement Letter</td>
+              <td>Invoice</td>
+              <td>TR1</td>
+              <td>TR8</td>
+              <td>TR1</td>
+              <td>TR8</td>
+              <td>Progress</td>
+              <td>Final</td>
+              <td>TR1</td>
+              <td>TR8</td>
+            </tr>
+          </thead>
+        </table>
       </div>
     );
   }
