@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import {Header} from './Header';
+import {CreateOrEditForm} from './CreateOrEditForm';
 
 const section = {
     borderLeft: "0.5px solid gray"
   , borderRight: "0.5px solid gray"
+  ,padding: '8px'
 }
 
 export class App extends Component {
   render() {
     return (
-      <div>
+      <div style={{ overflowX: 'scroll' }} >
         <Header/>
-        <table>
-        
+
+        <table style={{ position: 'absolute', top: '80px'}}>
           <thead>
             <tr>
               <td rowSpan="2" style={section}>Address</td>

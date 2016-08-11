@@ -31,7 +31,6 @@ var inspectionSchema = new Schema({
 		city: String,
 		state: String,
 		zip: String,
-		country: String
 	},
 	clientStatus: String,
 	recordsOnFile: {
