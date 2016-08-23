@@ -8,6 +8,7 @@ import { ReportsTable } from './../parts/ReportsTable'
 import { InspectionInformationTable } from './../parts/InspectionInformationTable'
 import DOBEditForm from './../forms/DOBEditForm'
 import AddressEditForm from './../forms/AddressEditForm'
+import ClientStatusForm from './../forms/ClientStatusForm'
 
 require('./../../../public/css/custom.css')
 
@@ -38,7 +39,7 @@ export class InspectionDetails extends Component {
 
   render() {
     const { inspections } = this.props
-    const { DOB, address } = this.state.edit
+    const { DOB, address, client, records, reports, inspectionInformation } = this.state.edit
     const inspection = find(inspections.toJS(), {"DOB": String(this.props.params.dob) })
     return (
       <div className="inspection-details">
@@ -71,9 +72,17 @@ export class InspectionDetails extends Component {
 
 
         <h2>Client Status
-          <span className="edit-toggle">edit</span>
+          <span className="edit-toggle" onClick={() => this.toggleEdit('client')}>edit</span>
         </h2>
-        <p>{inspection.client}</p>
+
+        {
+            client ?
+            <ClientStatusForm client={inspection.client} id={inspection.id} />
+            :
+            <p>{inspection.client}</p>
+        }
+
+
 
         <h2>Records on File
 

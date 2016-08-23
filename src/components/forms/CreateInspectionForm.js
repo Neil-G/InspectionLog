@@ -5,12 +5,11 @@ require('./../../../public/css/custom.css')
 
 const CreateInspectionForm = () => (
   <div>
-
-    <h3 className="center-text">Create a New Inspection</h3>
-
     <div className="row">
       <Link to="/inspections/search" className="create-new-inspection"> search inspections </Link>
     </div>
+
+    <h3 className="center-text">Create a New Inspection</h3>
     <div className="row">
       <input type="text" className="columns six offset-by-three" placeholder="DOB#"/>
     </div>

@@ -9,8 +9,6 @@ export class Header extends Component {
         <p>
           <Link to="/"> Inspection Manager </Link>
         </p>
-
-
       </header>
     );
   }
