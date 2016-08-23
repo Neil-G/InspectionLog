@@ -11,6 +11,7 @@ import AddressEditForm from './../forms/AddressEditForm'
 import ClientStatusForm from './../forms/ClientStatusForm'
 import RecordsForm from './../forms/RecordsForm'
 import ReportsForm from './../forms/ReportsForm'
+import InspectionInformationForm from './../forms/InspectionInformationForm'
 
 require('./../../../public/css/custom.css')
 
@@ -108,9 +109,15 @@ export class InspectionDetails extends Component {
 
 
         <h2>Inspection Information
-          <span className="edit-toggle">edit</span>
+          <span className="edit-toggle" onClick={() => this.toggleEdit('inspectionInformation')}>edit</span>
         </h2>
-        <InspectionInformationTable inspectionInformation={inspection.inspectionInformation} />
+
+        {
+          inspectionInformation ?
+          <InspectionInformationForm inspectionInformation={inspection.inspectionInformation} id={inspection.id}/>
+          :
+          <InspectionInformationTable inspectionInformation={inspection.inspectionInformation} />
+        }
 
 
         <h2>Comments</h2>
