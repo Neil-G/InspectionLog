@@ -21,8 +21,10 @@ let store = createStore(
 
 store.dispatch({
   type: 'SET_INSPECTIONS',
-  inspections: [mockInspection]
+  inspections: mockInspection
 })
+
+console.log("mockInspection", mockInspection)
 
 const routes = (
   <Provider store={store}>
