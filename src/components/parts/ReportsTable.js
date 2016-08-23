@@ -45,11 +45,11 @@ export class ReportsTable extends Component {
             <td>Final Reports</td>
             <td>{
               reports.finalReports.TR1 &&
-              moment(inspection.reports.finalReports.TR1).format("M/D/YY")
+              moment(reports.finalReports.TR1).format("M/D/YY")
             }</td>
             <td>{
               reports.finalReports.TR8 &&
-              moment(inspection.reports.finalReports.TR8).format("M/D/YY")
+              moment(reports.finalReports.TR8).format("M/D/YY")
             }</td>
           </tr>
 

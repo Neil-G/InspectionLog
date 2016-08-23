@@ -1,4 +1,48 @@
 export const mockInspection = [
+
+  {
+    "DOB": "9786487988",
+    "address": {
+      "line1": "4949 Green Terrace",
+      "line2": "",
+      "city": "NY",
+      "state": "NY",
+      "zip": "10012"
+    },
+    "client": "IN-HOUSE",
+    "recordsOnFile": {
+      "proposal": null,
+      "engagementLetter": null,
+      "invoice": "2016-08-21T04:25:22.151Z"
+    },
+    "reports": {
+      "specialInspection": {
+        "TR1": null, "TR8": null
+      },
+      "initialReportCopies": {
+        "TR1": "2016-08-21T04:25:22.151Z", "TR8": null
+      },
+      "finalReports": {
+        "TR1": "2016-08-21T04:25:22.151Z", "TR8": null
+      }
+    },
+    "inspectionInformation": {
+      "progressCheckinDates": [],
+      "date": "2016-08-21T04:25:22.151Z",
+      "inspector": "Jillian Simmons",
+      "results": false,
+      "reportFiled": null,
+      "signedOffDate": null
+    },
+    "comments": [
+      {
+        title: "Flooding ",
+        date: "2016-08-21T04:25:22.151Z",
+        body: "There are signs of flooding"
+      }
+    ]
+  },
+  
   {
     "DOB": "132498654320",
     "address": {
@@ -42,48 +86,7 @@ export const mockInspection = [
     ]
   },
   // second inspection
-  {
-    "DOB": "9786487988",
-    "address": {
-      "line1": "4949 Green Terrace",
-      "line2": "",
-      "city": "NY",
-      "state": "NY",
-      "zip": "10012"
-    },
-    "client": "IN-HOUSE",
-    "recordsOnFile": {
-      "proposal": null,
-      "engagementLetter": null,
-      "invoice": "2016-08-21T04:25:22.151Z"
-    },
-    "reports": {
-      "specialInspection": {
-        "TR1": null, "TR8": null
-      },
-      "initialReportCopies": {
-        "TR1": "2016-08-21T04:25:22.151Z", "TR8": null
-      },
-      "finalReports": {
-        "TR1": "2016-08-21T04:25:22.151Z", "TR8": null
-      }
-    },
-    "inspectionInformation": {
-      "progressCheckinDates": [],
-      "date": "2016-08-21T04:25:22.151Z",
-      "inspector": "Jillian Simmons",
-      "results": false,
-      "reportFiled": null,
-      "signedOffDate": null
-    },
-    "comments": [
-      {
-        title: "Flooding ",
-        date: "2016-08-21T04:25:22.151Z",
-        body: "There are signs of flooding"
-      }
-    ]
-  },
+
   // third inspection
   {
     "DOB": "23656988795",

@@ -29,8 +29,7 @@ export class InspectionDetails extends Component {
 
   render() {
     const { inspections } = this.props
-    const inspection = find(inspections.toJS(), {"DOB": "132498654320"})
-    console.log(inspections, inspection)
+    const inspection = find(inspections.toJS(), {"DOB": String(this.props.params.dob) })
     return (
       <div className="inspection-details">
 
