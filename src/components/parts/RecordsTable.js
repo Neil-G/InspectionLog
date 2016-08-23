@@ -15,7 +15,7 @@ export class RecordsTable extends Component {
         </thead>
         <tbody>
           <tr>
-            <td>Special Inspection</td>
+            <td>Proposal</td>
             <td>{
               recordsOnFile.proposal &&
               moment(recordsOnFile.proposal).format("M/D/YY")

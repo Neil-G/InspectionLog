@@ -9,6 +9,8 @@ import { InspectionInformationTable } from './../parts/InspectionInformationTabl
 import DOBEditForm from './../forms/DOBEditForm'
 import AddressEditForm from './../forms/AddressEditForm'
 import ClientStatusForm from './../forms/ClientStatusForm'
+import RecordsForm from './../forms/RecordsForm'
+import ReportsForm from './../forms/ReportsForm'
 
 require('./../../../public/css/custom.css')
 
@@ -84,13 +86,25 @@ export class InspectionDetails extends Component {
 
 
 
-        <h2>Records on File
+        <h2> Records on File  </h2>
+        <span className="edit-toggle" onClick={() => this.toggleEdit('records')}>edit</span>
+        {
+          records ?
+          <RecordsForm recordsOnFile={inspection.recordsOnFile} id={inspection.id} />
+          :
+          <RecordsTable recordsOnFile={inspection.recordsOnFile} />
+        }
 
-        </h2>
-        <span className="edit-toggle">edit</span>
-        <RecordsTable recordsOnFile={inspection.recordsOnFile} />
-        <span className="edit-toggle">edit</span>
-        <ReportsTable reports={inspection.reports} />
+
+        <span className="edit-toggle" onClick={() => this.toggleEdit('reports')}>edit</span>
+        {
+          reports ?
+          <ReportsForm reports={inspection.reports} id={inspection.id} />
+          :
+          <ReportsTable reports={inspection.reports} />
+        }
+
+
 
 
         <h2>Inspection Information
