@@ -22,7 +22,7 @@ app.use(express.static('public'))
 
 // DATABASE
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds153845.mlab.com:53845/inspectionlog');
+// mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds153845.mlab.com:53845/inspectionlog');
 
 
 var Schema = mongoose.Schema;
