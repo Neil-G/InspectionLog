@@ -1,0 +1,62 @@
+* {
+  box-sizing: border-box;
+}
+
+header {
+  background: #263238;
+  color: white;
+  padding: 6px 6px 0px;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.search-row {
+  max-width: 400px;
+  margin: auto;
+}
+
+.clear-search-button {
+  width: 25%;
+}
+
+.search-input {
+  width: 75%;
+}
+
+.inspection-preview {
+  border: 0.33px solid gray;
+  padding: 4px;
+  max-width: 400px;
+  margin: auto auto 4px;
+}
+
+.info-table {
+ width: 420px;
+  min-width: 360px;
+}
+
+.comment-card {
+  border: 0.33px solid gray;
+  padding: 4px;
+  max-width: 400px;
+  margin-bottom: 4px;
+}
+
+.create-new-inspection {
+  float: right;
+  color: white;
+  cursor: pointer;
+}
+
+.edit-toggle {
+  float: right;
+  font-size: 0.33em;
+  cursor: pointer;
+}
+
+/*.inspection-details {
+  padding-left: 8px;
+  border-left: 0.5px solid gray;
+}*/
