@@ -4,6 +4,7 @@ import { App } from './App';
 import { Router, Route, IndexRoute, Redirect, browserHistory } from 'react-router'
 import { InspectionPreviewsContainer } from './components/containers/InspectionPreviews'
 import { InspectionDetailsContainer } from './components/containers/InspectionDetails'
+import { SearchForm } from './components/containers/SearchForm'
 import InspectionSearchForm from './components/forms/InspectionSearchForm'
 import CreateInspectionForm from './components/forms/CreateInspectionForm'
 import { Provider } from 'react-redux'
@@ -34,7 +35,7 @@ const routes = (
       <Redirect from="/" to="/inspections/search" />
       <Route path="/" component={App}>
         <Route path="inspections" component={InspectionPreviewsContainer}>
-          <Route path="search" component={InspectionSearchForm} />
+          <Route path="search" component={SearchForm} />
           <Route path="new" component={CreateInspectionForm} />
         </Route>
         <Route path="inspections/:dob" component={InspectionDetailsContainer} />

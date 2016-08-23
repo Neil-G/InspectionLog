@@ -1,7 +1,7 @@
 export const searchText = (state = "", action) => {
   switch (action.type){
-    case 'SET_TEXT':
-      return List(action.text)
+    case 'UPDATE_TEXT':
+      return action.text
     default:
       return state
 
