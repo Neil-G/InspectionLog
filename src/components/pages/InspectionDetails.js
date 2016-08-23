@@ -6,6 +6,8 @@ import { InspectionAddress } from './../parts/InspectionAddress'
 import { RecordsTable } from './../parts/RecordsTable'
 import { ReportsTable } from './../parts/ReportsTable'
 import { InspectionInformationTable } from './../parts/InspectionInformationTable'
+import DOBEditForm from './../forms/DOBEditForm'
+import AddressEditForm from './../forms/AddressEditForm'
 
 require('./../../../public/css/custom.css')
 
@@ -25,23 +27,48 @@ export class InspectionDetails extends Component {
         inspectionInformation: false
       }
     }
+
+    this.toggleEdit = this.toggleEdit.bind(this)
+  }
+
+  toggleEdit(section){
+    this.state.edit[section] = !this.state.edit[section]
+    this.setState({ edit: this.state.edit })
   }
 
   render() {
     const { inspections } = this.props
+    const { DOB, address } = this.state.edit
     const inspection = find(inspections.toJS(), {"DOB": String(this.props.params.dob) })
     return (
       <div className="inspection-details">
 
+
         <h2>DOB Application #
-          <span className="edit-toggle">edit</span>
+          <span className="edit-toggle" onClick={() => this.toggleEdit('DOB')}>edit</span>
         </h2>
-        <p>{inspection.DOB}</p>
+
+        {
+          DOB ?
+          <DOBEditForm dob={inspection.DOB} id={inspection.id} />
+          :
+          <p>{inspection.DOB}</p>
+        }
+
 
         <h2>Address
-          <span className="edit-toggle">edit</span>
+          <span className="edit-toggle" onClick={() => this.toggleEdit('address')}>edit</span>
         </h2>
-        <InspectionAddress address={inspection.address} />
+
+        {
+          address ?
+          <AddressEditForm address={inspection.address} id={inspection.id} />
+          :
+          <InspectionAddress address={inspection.address} />
+        }
+
+
+
 
         <h2>Client Status
           <span className="edit-toggle">edit</span>
@@ -49,9 +76,11 @@ export class InspectionDetails extends Component {
         <p>{inspection.client}</p>
 
         <h2>Records on File
-          <span className="edit-toggle">edit</span>
+
         </h2>
+        <span className="edit-toggle">edit</span>
         <RecordsTable recordsOnFile={inspection.recordsOnFile} />
+        <span className="edit-toggle">edit</span>
         <ReportsTable reports={inspection.reports} />
 
 

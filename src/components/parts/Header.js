@@ -8,7 +8,6 @@ export class Header extends Component {
       <header>
         <p>
           <Link to="/"> Inspection Manager </Link>
-          <span className="create-new-inspection"> + create new inspection </span>
         </p>
 
 

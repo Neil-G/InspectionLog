@@ -1,9 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { App } from './App';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import { Router, Route, IndexRoute, Redirect, browserHistory } from 'react-router'
 import { InspectionPreviewsContainer } from './components/containers/InspectionPreviews'
 import { InspectionDetailsContainer } from './components/containers/InspectionDetails'
+import InspectionSearchForm from './components/forms/InspectionSearchForm'
+import CreateInspectionForm from './components/forms/CreateInspectionForm'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import { mainReducer } from './reducers'
@@ -29,8 +31,12 @@ console.log("mockInspection", mockInspection)
 const routes = (
   <Provider store={store}>
     <Router history={browserHistory}>
+      <Redirect from="/" to="/inspections/search" />
       <Route path="/" component={App}>
-        <IndexRoute component={InspectionPreviewsContainer} />
+        <Route path="inspections" component={InspectionPreviewsContainer}>
+          <Route path="search" component={InspectionSearchForm} />
+          <Route path="new" component={CreateInspectionForm} />
+        </Route>
         <Route path="inspections/:dob" component={InspectionDetailsContainer} />
       </Route>
     </Router>

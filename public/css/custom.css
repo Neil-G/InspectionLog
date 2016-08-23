@@ -46,7 +46,7 @@ header {
 
 .create-new-inspection {
   float: right;
-  color: white;
+  color: black;
   cursor: pointer;
 }
 
@@ -55,6 +55,15 @@ header {
   font-size: 0.33em;
   cursor: pointer;
 }
+
+.create-button {
+  background: #C8E6C9;
+}
+
+.submit-button {
+  background: #C8E6C9;
+}
+
 
 /*.inspection-details {
   padding-left: 8px;
