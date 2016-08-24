@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 require('./../public/custom.scss')
 
-const App = ({ children }) => (
+const App = (props: { children: string }) => (
   <div className="container test">
     <h1>Hello Goodbye</h1>
   </div>
