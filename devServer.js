@@ -2,8 +2,8 @@ var path = require('path');
 var webpack = require('webpack');
 var config = require('./webpack.config.dev');
 var logger = require('morgan');
-var app = require('./server-src/app');
-var models = require('./server-src/db/models');
+var app = require('./app');
+var models = require('./models');
 
 // logging
 app.use(logger('dev'));
