@@ -1,9 +1,15 @@
 var path = require('path');
-var express = require('express');
 var webpack = require('webpack');
 var config = require('./webpack.config.dev');
+var logger = require('morgan');
+var app = require('./app')
 
-var app = express();
+
+// logging
+app.use(logger('dev'));
+
+
+// webpack configuration
 var compiler = webpack(config);
 
 app.use(require('webpack-dev-middleware')(compiler, {
@@ -13,12 +19,14 @@ app.use(require('webpack-dev-middleware')(compiler, {
 
 app.use(require('webpack-hot-middleware')(compiler));
 
-app.use('/public', express.static('public'));
 
+// serve index.html
 app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+
+// listen on selected port
 app.listen(3000, function(err) {
   if (err) {
     console.log(err);
