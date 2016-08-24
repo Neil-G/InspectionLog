@@ -2,8 +2,8 @@ var path = require('path');
 var webpack = require('webpack');
 var config = require('./webpack.config.dev');
 var logger = require('morgan');
-var app = require('./app')
-
+var app = require('./server-src/app');
+var models = require('./server-src/db/models');
 
 // logging
 app.use(logger('dev'));
@@ -27,11 +27,13 @@ app.get('*', function(req, res) {
 
 
 // listen on selected port
-app.listen(3000, function(err) {
-  if (err) {
-    console.log(err);
-    return;
-  }
+models.sequelize.sync().then(function () {
+  app.listen(3000, function(err) {
+    if (err) {
+      console.log(err);
+      return;
+    }
 
-  console.log('Listening at http://localhost:3000');
-});
+    console.log('Listening at http://localhost:3000');
+  });
+})
