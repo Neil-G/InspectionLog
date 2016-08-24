@@ -28,7 +28,7 @@ app.get('*', function(req, res) {
 
 // listen on selected port
 models.sequelize.sync().then(function () {
-  app.listen(3000, function(err) {
+  app.listen(3001, function(err) {
     if (err) {
       console.log(err);
       return;
