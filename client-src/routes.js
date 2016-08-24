@@ -1,4 +1,5 @@
 import React from 'react';
+import { Provider } from 'react-redux'
 import { Router, Route, IndexRoute, Redirect, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import App from './App'
@@ -11,9 +12,11 @@ const history = syncHistoryWithStore(browserHistory, store)
 
 
 const routes = (
-  <Router history={history}>
-    <Route path='/' component={App} />
-  </Router>
+  <Provider store={store}>
+    <Router history={history}>
+      <Route path='/' component={App} />
+    </Router>
+  </Provider>
 )
 
 export default routes

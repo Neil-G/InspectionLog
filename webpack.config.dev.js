@@ -29,12 +29,12 @@ module.exports = {
         include: path.join(__dirname, 'client-src')
       },
       {
-        test: /\.css$/,
-        loader: "style-loader!css-loader"
-      },
-      {
         test: /\.scss$/,
         loaders: ["style", "css", "sass"]
+      },
+      {
+        test: /\.css$/,
+        loader: "style-loader!css-loader"
       }
     ]
   }
