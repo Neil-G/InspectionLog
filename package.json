@@ -8,7 +8,9 @@
     "build": "npm run clean && npm run build:webpack",
     "start": "node devServer.js",
     "lint:client": "eslint client-src; exit 0",
-    "flow": "flow; test $? -eq 0 -o $? -eq 2"
+    "flow": "flow; test $? -eq 0 -o $? -eq 2",
+    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js 'test/**/*.@(js|jsx)'",
+    "test:watch": "npm run test -- --watch"
   },
   "repository": {
     "type": "git",
@@ -48,6 +50,7 @@
     "eventsource-polyfill": "^0.9.6",
     "express": "^4.13.3",
     "flow-bin": "^0.31.1",
+    "jsdom": "^9.4.2",
     "mocha": "^3.0.2",
     "node-sass": "^3.8.0",
     "redux-devtools": "^3.3.1",
