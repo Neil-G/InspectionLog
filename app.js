@@ -5,6 +5,32 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var graphQLHTTP = require('express-graphql');
+var graphql = require ('graphql').graphql;
+var Schema = require('./build/graphql');
+
+var query = 'query { todos { id, title, completed } }'
+graphql(Schema, query).then( function(result) {
+  console.log(JSON.stringify(result));
+  // Prints
+  // {
+  //   "data":{
+  //     "todos":[
+  //       {
+  //         "id":1446412739542,
+  //         "title":"Read emails",
+  //         "completed":false
+  //       },
+  //       {
+  //         "id":1446412740883,
+  //         "title":"Buy orange",
+  //         "completed":true
+  //       }
+  //     ]
+  //   }
+  // }
+});
+
 
 // routes
 // var locations = require('./routes/locations');
@@ -12,6 +38,7 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
+app.use('/', graphQLHTTP({ schema: Schema, pretty: true }))
 
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(bodyParser.json());

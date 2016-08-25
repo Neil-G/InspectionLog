@@ -10,7 +10,8 @@
     "lint:client": "eslint client-src; exit 0",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "test": "NODE_ENV=production mocha --compilers js:babel-core/register --require ./test/test_helper.js 'test/**/*.@(js|jsx)'",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "babel:build": "babel --watch=./server-src --out-dir=./build"
   },
   "repository": {
     "type": "git",
