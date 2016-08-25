@@ -6,7 +6,7 @@ var app = require('./app');
 var models = require('./models');
 
 // logging
-app.use(logger('dev'));
+// app.use(logger('dev'));
 
 
 // webpack configuration
@@ -28,7 +28,7 @@ app.get('*', function(req, res) {
 
 // listen on selected port
 models.sequelize.sync().then(function () {
-  app.listen(3001, function(err) {
+  app.listen(3000, function(err) {
     if (err) {
       console.log(err);
       return;
