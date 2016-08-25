@@ -8,6 +8,7 @@
     "build": "npm run clean && npm run build:webpack",
     "start": "node devServer.js",
     "lint:client": "eslint client-src; exit 0",
+    "lint:server": "eslint server-src; exit 0",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "test": "NODE_ENV=production mocha --compilers js:babel-core/register --require ./test/test_helper.js 'test/**/*.@(js|jsx)'",
     "test:watch": "npm run test -- --watch",

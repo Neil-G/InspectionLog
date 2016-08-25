@@ -1,8 +1,10 @@
+// @flow
+
 var graphql = require('graphql');
 var TodoType = require('./../schemas').example
 
 
-var TODOs = [
+var TODOs: Array<{id: number, title: string, completed: boolean;}> = [
   {
     "id": 1446412739542,
     "title": "Read emails",

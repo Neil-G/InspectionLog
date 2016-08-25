@@ -1,5 +1,3 @@
-// @flow
-
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -9,27 +7,27 @@ var graphQLHTTP = require('express-graphql');
 var graphql = require ('graphql').graphql;
 var Schema = require('./build/graphql');
 
-var query = 'query { todos { id, title, completed } }'
-graphql(Schema, query).then( function(result) {
-  console.log(JSON.stringify(result));
-  // Prints
-  // {
-  //   "data":{
-  //     "todos":[
-  //       {
-  //         "id":1446412739542,
-  //         "title":"Read emails",
-  //         "completed":false
-  //       },
-  //       {
-  //         "id":1446412740883,
-  //         "title":"Buy orange",
-  //         "completed":true
-  //       }
-  //     ]
-  //   }
-  // }
-});
+// var query = 'query { todos { id, title, completed } }'
+// graphql(Schema, query).then( function(result) {
+//   console.log(JSON.stringify(result));
+//   // Prints
+//   // {
+//   //   "data":{
+//   //     "todos":[
+//   //       {
+//   //         "id":1446412739542,
+//   //         "title":"Read emails",
+//   //         "completed":false
+//   //       },
+//   //       {
+//   //         "id":1446412740883,
+//   //         "title":"Buy orange",
+//   //         "completed":true
+//   //       }
+//   //     ]
+//   //   }
+//   // }
+// });
 
 
 // routes
