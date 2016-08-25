@@ -1,6 +1,8 @@
 var graphql = require ('graphql');
-var example = require('./../queries')
+var exampleQuery = require('./queries').example;
+var MutationType = require('./mutations');
 
 module.exports = new graphql.GraphQLSchema({
-  query: example
+  query: exampleQuery,
+  mutation: MutationType
 });

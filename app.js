@@ -38,7 +38,7 @@ graphql(Schema, query).then( function(result) {
 
 var app = express();
 
-app.use('/', graphQLHTTP({ schema: Schema, pretty: true }))
+app.use('/graphQL', graphQLHTTP({ schema: Schema, pretty: true }))
 
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(bodyParser.json());
