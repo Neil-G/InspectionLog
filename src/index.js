@@ -5,6 +5,7 @@ import { Router, Route, IndexRoute, Redirect, browserHistory } from 'react-route
 import { InspectionPreviewsContainer } from './components/containers/InspectionPreviews'
 import { InspectionDetailsContainer } from './components/containers/InspectionDetails'
 import { SearchForm } from './components/containers/SearchForm'
+import { CreateForm } from './components/containers/CreateForm'
 import InspectionSearchForm from './components/forms/InspectionSearchForm'
 import CreateInspectionForm from './components/forms/CreateInspectionForm'
 import { Provider } from 'react-redux'
@@ -36,7 +37,7 @@ const routes = (
       <Route path="/" component={App}>
         <Route path="inspections" component={InspectionPreviewsContainer}>
           <Route path="search" component={SearchForm} />
-          <Route path="new" component={CreateInspectionForm} />
+          <Route path="new" component={CreateForm} />
         </Route>
         <Route path="inspections/:dob" component={InspectionDetailsContainer} />
       </Route>
