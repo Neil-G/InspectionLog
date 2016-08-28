@@ -47,7 +47,17 @@ class CreateInspectionForm extends Component {
       },
       "comments": []
     }
+
+    // save new Inspection
     this.props.createInspection(newInspection)
+
+    // refresh form inputs
+    this.refs.DOB.value = ""
+    this.refs.addressLine1.value = ""
+    this.refs.addressLine2.value = ""
+    this.refs.city.value = ""
+    this.refs.state.value = ""
+    this.refs.zip.value = ""
   }
 
   render(){
