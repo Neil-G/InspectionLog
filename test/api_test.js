@@ -6,10 +6,10 @@ var server = app.listen(3001)
 
 chai.use(chaiHttp)
 
-describe('/graphQL', () => {
-  it('should return todo', (done) => {
+describe('/graphql', () => {
+  it('todos query should return todo', (done) => {
     chai.request(server)
-      .post('/graphQL')
+      .post('/graphql')
       .set('content-type', 'application/graphql')
       .send('query { todos { id, title, completed } }')
       .end((err, res) => {

@@ -36,7 +36,14 @@ var Schema = require('./build/graphql');
 
 var app = express();
 
-app.use('/graphQL', graphQLHTTP({ schema: Schema, pretty: true }))
+app.use('/graphql', graphQLHTTP({ schema: Schema, pretty: true }))
+
+
+// serve index.html
+// app.get('*', function(req, res) {
+//   res.sendFile(path.join(__dirname, 'index.html'));
+// });
+
 
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(bodyParser.json());
