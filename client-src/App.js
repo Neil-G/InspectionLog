@@ -6,7 +6,7 @@ require('./custom.scss')
 class App extends Component {
   render() {
     return (
-      <div className="test-2 container">
+      <div className="container">
         <h1>Hello!</h1>
       </div>
     );
