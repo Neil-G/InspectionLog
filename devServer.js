@@ -3,10 +3,22 @@ var webpack = require('webpack');
 var config = require('./webpack.config.dev');
 var logger = require('morgan');
 var app = require('./app');
-var models = require('./models');
+// var models = require('./models');
 
 // logging
 // app.use(logger('dev'));
+
+
+// middleware
+// function sessionTracking(req, res, next){
+//   if (!req.session.views){
+//     req.session.views = 1;
+//   } else {
+//     req.session.views += 1
+//   }
+//   console.log(req.session.views, req.path)
+//   next()
+// }
 
 
 // webpack configuration
@@ -27,13 +39,11 @@ app.get('*', function(req, res) {
 
 
 // listen on selected port
-models.sequelize.sync().then(function () {
-  app.listen(3000, function(err) {
-    if (err) {
-      console.log(err);
-      return;
-    }
+app.listen(3000, function(err) {
+  if (err) {
+    console.log(err);
+    return;
+  }
 
-    console.log('Listening at http://localhost:3000');
-  });
-})
+  console.log('Listening at http://localhost:3000');
+});

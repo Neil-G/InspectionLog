@@ -3,10 +3,10 @@ var webpack = require('webpack');
 var config = require('./webpack.config.dev');
 var logger = require('morgan');
 var app = require('./app');
-var models = require('./models');
+// var models = require('./models');
 
 // logging
-app.use(logger('combined'));
+// app.use(logger('combined'));
 
 
 // serve index.html
@@ -16,13 +16,11 @@ app.get('*', function(req, res) {
 
 
 // listen on selected port
-models.sequelize.sync().then(function () {
-  app.listen(3000, function(err) {
-    if (err) {
-      console.log(err);
-      return;
-    }
+app.listen(3000, function(err) {
+  if (err) {
+    console.log(err);
+    return;
+  }
 
-    console.log('Listening at http://localhost:3000');
-  });
-})
+  console.log('Listening at http://localhost:3000');
+});
