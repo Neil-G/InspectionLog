@@ -11,6 +11,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     updateText: (text) => {
       dispatch({ type: 'UPDATE_TEXT', text })
+    },
+    setInspections: (inspections) => {
+      dispatch({ type: 'SET_INSPECTIONS', inspections })
     }
   }
 }

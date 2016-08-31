@@ -42,6 +42,7 @@ export class InspectionDetails extends Component {
 
   render() {
     const { inspections } = this.props
+    console.log(inspections)
     const { DOB, address, client, records, reports, inspectionInformation } = this.state.edit
     const inspection = find(inspections.toJS(), {"DOB": String(this.props.params.dob) })
     return (
@@ -80,9 +81,9 @@ export class InspectionDetails extends Component {
 
         {
             client ?
-            <ClientStatusForm client={inspection.client} id={inspection.id} />
+            <ClientStatusForm client={inspection.clientType} id={inspection.id} />
             :
-            <p>{inspection.client}</p>
+            <p>{inspection.clientType}</p>
         }
 
 
@@ -120,16 +121,19 @@ export class InspectionDetails extends Component {
         }
 
 
-        <h2>Comments</h2>
-          {
-            inspection.comments.map( comment => {
-              return(
-                <Comment comment={comment} />
-              )
-            })
-          }
+
 
       </div>
     );
   }
 }
+
+
+// <h2>Comments</h2>
+//   {
+//     inspection.comments.map( comment => {
+//       return(
+//         <Comment comment={comment} />
+//       )
+//     })
+//   }

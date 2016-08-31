@@ -23,10 +23,11 @@ let store = createStore(
   )
 )
 
-store.dispatch({
-  type: 'SET_INSPECTIONS',
-  inspections: mockInspection
-})
+// store.dispatch({
+//   type: 'SET_INSPECTIONS',
+//   inspections: mockInspection
+// })
+
 
 console.log("mockInspection", mockInspection)
 
@@ -34,6 +35,7 @@ const routes = (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Redirect from="/" to="/inspections/search" />
+      <Redirect from="/inspections" to="/inspections/search" />
       <Route path="/" component={App}>
         <Route path="inspections" component={InspectionPreviewsContainer}>
           <Route path="search" component={SearchForm} />

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+var axios = require('axios');
 require('./../../../public/css/custom.css')
 
 
@@ -20,7 +21,7 @@ class CreateInspectionForm extends Component {
         "state": this.refs.state.value,
         "zip": this.refs.zip.value
       },
-      "client": this.refs.clientType.value,
+      "clientType": this.refs.clientType.value,
       "recordsOnFile": {
         "proposal": null,
         "engagementLetter": null,
@@ -41,7 +42,7 @@ class CreateInspectionForm extends Component {
         "progressCheckinDates": [],
         "date": null,
         "inspector": null,
-        "results": false,
+        "results": "",
         "reportFiled": null,
         "signedOffDate": null
       },
@@ -49,7 +50,16 @@ class CreateInspectionForm extends Component {
     }
 
     // save new Inspection
-    this.props.createInspection(newInspection)
+    axios.post('/api/inspections/create', { newInspection })
+      .then( (res) => {
+        console.log(res)
+        this.props.createInspection(res.data)
+      })
+      .then( (err) => {
+        console.log(err)
+      })
+
+    // this.props.createInspection(newInspection)
 
     // refresh form inputs
     this.refs.DOB.value = ""
