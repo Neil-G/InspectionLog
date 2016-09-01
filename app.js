@@ -58,18 +58,6 @@ var pathSkipList = [
   '/favicon.ico'
 ]
 
-app.use(function(req, res, next){
-  if (!pathSkipList.includes(req.path)){ // ignore fetching of public files
-    if (!req.session.views){
-      req.session.views = 1;
-    } else {
-      req.session.views += 1
-    }
-    console.log(req.session.views, req.path)
-  }
-
-  next()
-})
 
 
 app.use('/graphql', graphQLHTTP({ schema: Schema, pretty: true }))

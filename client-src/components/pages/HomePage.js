@@ -1,16 +1,14 @@
-// @flow
 
 import React, { Component } from 'react';
-require('./custom.scss')
 
-class App extends Component {
+class HomePage extends Component {
   render() {
     return (
       <div className="container">
-        {this.props.children}
+        <h1>Hello!</h1>
       </div>
     );
   }
 }
 
-export default App
+export default HomePage
