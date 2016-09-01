@@ -11,7 +11,7 @@ var app = require('./app');
 
 // serve index.html
 app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, 'prod_index.html'));
 });
 
 
