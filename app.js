@@ -85,7 +85,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static('public')); // couldn't find skeleton without this
-
+app.use('/dist', express.static('public'));
 
 // routes
 // app.use('/api/locations', locations);
