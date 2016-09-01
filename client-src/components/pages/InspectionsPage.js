@@ -7,6 +7,11 @@ class InspectionsPage extends Component {
   render() {
     return (
       <div>
+
+        <div className='row'>
+          <p className='center-text'> <Link to='/inspections/create'> Create New Inspection </Link> </p>
+        </div>
+
         <h2 className='search-header'> Search Inspections </h2>
 
         <div className='row'>
@@ -29,10 +34,6 @@ class InspectionsPage extends Component {
 
         <div className='row'>
           <input type='text' className='offset-by-three six columns'/>
-        </div>
-
-        <div className='row'>
-          <p className='center-text create-link'> <Link to='/inspections/create'> Create New Inspection </Link> </p>
         </div>
 
         <hr/>

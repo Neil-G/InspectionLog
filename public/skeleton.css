@@ -270,7 +270,7 @@ select:focus {
   outline: 0; }
 label,
 legend {
-  display: inline;
+  display: block;
   margin-bottom: .5rem;
   font-weight: 600; }
 fieldset {

@@ -26,6 +26,13 @@ header {
   text-align: center;
 }
 
-.create-link {
-  margin-bottom: 0;
+
+/* CreateOrEdit Inspection Form */
+thead {
+  color: white;
+  background: black;
+}
+
+th:first-child, td:first-child {
+  padding-left: 4px;
 }
