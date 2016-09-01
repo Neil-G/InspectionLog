@@ -1,7 +1,9 @@
 import HomePage from './HomePage'
+import InspectionsPage from './InspectionsPage'
 
 const Pages = {
-  HomePage
+  HomePage,
+  InspectionsPage
 }
 
 export default Pages
