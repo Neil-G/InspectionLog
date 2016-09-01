@@ -6,8 +6,8 @@ require('./../../../public/custom.css')
 class Header extends Component {
   render() {
     return (
-      <header>
-        <h1>Cheap Engineers</h1>
+      <header >
+        <h2 className="container">Cheap Engineers</h2>
       </header>
     );
   }
