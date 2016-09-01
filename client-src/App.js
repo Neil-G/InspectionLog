@@ -1,13 +1,17 @@
 // @flow
 
 import React, { Component } from 'react';
-require('./custom.scss')
+import Parts from './components/parts'
+
 
 class App extends Component {
   render() {
     return (
-      <div className="container">
-        {this.props.children}
+      <div>
+        <Parts.Header />
+        <div className="container">
+          {this.props.children}
+        </div>
       </div>
     );
   }
