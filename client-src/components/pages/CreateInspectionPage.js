@@ -11,7 +11,7 @@ class CreateInspectionPage extends Component {
     return (
       <div>
         <p className='center-text'><Link to='/inspections'> Search Inspections </Link></p>
-        <h2 className='center-text'> Create an Inspection </h2>
+        <h2 className='center-text'> Create New Inspection </h2>
         <Forms.CreateOrEditForm />
       </div>
     );

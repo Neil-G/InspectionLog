@@ -1,4 +1,9 @@
 /* General */
+
+* {
+    box-sizing: border-box;
+}
+
 .center-text{
   text-align: center;
 }
@@ -35,4 +40,36 @@ thead {
 
 th:first-child, td:first-child {
   padding-left: 4px;
+}
+
+th:last-child, td:last-child {
+  padding-right: 2px;
+}
+
+.section-header {
+  color: #EF5350;
+  margin-top: 16px;
+  font-size: larger;
+}
+
+table {
+  border: 2px solid gray;
+  padding: 4px;
+}
+
+tbody > tr:nth-child(2n-1) {
+  background: #E1F5FE;
+}
+
+.comment-wrapper {
+  position: absolute;
+}
+
+button.submit-create-or-edit {
+  background: #A5D6A7;
+  height: 60px;
+}
+
+button.add {
+  background: #E8F5E9;
 }
