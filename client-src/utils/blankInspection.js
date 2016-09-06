@@ -1,12 +1,15 @@
-function blankInspection(){
+function blankInspection(id="1"){
   return {
+    "_id": id,
+    "createdAt": null,
+    "updatedAt": null,
     "DOB": "9786487988",
     "address": {
-      "line1": null,
-      "line2": null,
-      "city": null,
+      "line1": '769 e. 227 St.',
+      "line2": 'apt. 4',
+      "city": 'Bronx',
       "state": "NY",
-      "zip": null
+      "zip": '10466'
     },
     "clientType": "IN-HOUSE",
     "recordsOnFile": {

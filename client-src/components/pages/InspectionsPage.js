@@ -1,42 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
 require('./../../../public/custom.css')
-
+import Parts from './../parts'
+import Containers from './../../containers'
+import Forms from './../forms'
 
 class InspectionsPage extends Component {
   render() {
     return (
       <div>
-
-        <div className='row'>
-          <p className='center-text'> <Link to='/inspections/create'> Create New Inspection </Link> </p>
-        </div>
-
-        <h2 className='search-header'> Search Inspections </h2>
-
-        <div className='row'>
-          <div className='offset-by-four two columns'>
-            <label>
-              <input type="radio" name='search-criteria'/>
-              <span className="label-body"> <b> DOB #</b> </span>
-            </label>
-          </div>
-          <div className="two columns">
-            <label>
-              <input type="radio" name='search-criteria'/>
-              <span className="label-body"> <b> ADDRESS</b> </span>
-            </label>
-          </div>
-        </div>
-
-        <div className='row'>
-        </div>
-
-        <div className='row'>
-          <input type='text' className='offset-by-three six columns'/>
-        </div>
-
-        <hr/>
+        <Containers.SearchForm />
+        <hr style={{ marginBottom: '2px'}} />
+        <Containers.SearchResults />
       </div>
     );
   }

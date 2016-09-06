@@ -3,6 +3,10 @@ var webpack = require('webpack');
 var config = require('./webpack.config.dev');
 var logger = require('morgan');
 var app = require('./app');
+
+
+
+
 // var models = require('./models');
 
 // logging

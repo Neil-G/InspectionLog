@@ -4,23 +4,30 @@ import React, { Component } from 'react';
 import { Link } from 'react-router'
 require('./../../../public/custom.css')
 var axios = require('axios')
+import moment from 'moment'
+
+function formatDate(date){
+  if (date == null) return "-"
+  return moment(date).format('YYYY-MM-DD')
+}
 
 function valueOrNull(value){
   if ((value == "") || (value == "-") || value == undefined) return null
   return value
 }
 
-class CreateOrEditForm extends Component {
+class EditForm extends Component {
   constructor(){
     super()
     this.state = {
       comments: [],
       checkIns: []
     }
-    this.onSubmitCreate = this.onSubmitCreate.bind(this)
+    this.onSubmitEdit = this.onSubmitEdit.bind(this)
+    this.cancelEdit = this.cancelEdit.bind(this)
   }
 
-  onSubmitCreate(e){
+  onSubmitEdit(e){
     e.preventDefault();
 
     if (
@@ -31,7 +38,7 @@ class CreateOrEditForm extends Component {
       return
     }
 
-    const newInspection = {
+    const editedInspection = {
       "DOB": valueOrNull(this.refs.DOB.value),
       "address": {
         "line1": valueOrNull(this.refs.line1.value),
@@ -71,9 +78,13 @@ class CreateOrEditForm extends Component {
       "comments": []
     }
 
-    axios.post('/api/inspections/create', { newInspection })
+    console.log('editedInspection: ', editedInspection)
+
+    axios.put(`/api/inspections/${this.props.inspection['_id']}`, { editedInspection })
       .then( (res) => {
-        console.log(res.data)
+        console.log('returned from edit: ', res.data)
+        this.props.updateInspection(res.data)
+        this.props.toggleEdit()
       })
       .then( (err) => {
         console.log(err)
@@ -81,32 +92,55 @@ class CreateOrEditForm extends Component {
 
   }
 
+  cancelEdit(e){
+    e.preventDefault()
+    this.props.toggleEdit()
+  }
+
   render() {
+    const { inspection } = this.props
     return (
       <form>
+
+        <button className='edit' onClick={this.cancelEdit} style={{float: 'right'}}>CANCEL EDIT</button>
+
         <div className='row'>
           <label className="section-header">DOB #</label>
-          <input ref='DOB' type='text' className='twelve columns'/>
+          <input
+            defaultValue={inspection.DOB}
+            ref='DOB'
+            type='text'
+            className='twelve columns'/>
         </div>
 
         <div className='row'>
           <label className="section-header">Address </label>
-          <input ref='line1' type='text' placeholder='Address Line 1' className='twelve columns'/>
+          <input
+            defaultValue={inspection.address.line1}
+            ref='line1'
+            type='text'
+            placeholder='Address Line 1'
+            className='twelve columns'/>
         </div>
 
         <div className='row'>
-          <input ref='line2' type='text' placeholder='Address Line 2' className='twelve columns'/>
+          <input
+            defaultValue={inspection.address.line2}
+            ref='line2'
+            type='text'
+            placeholder='Address Line 2'
+            className='twelve columns'/>
         </div>
 
         <div className='row'>
-          <input ref='city' type='text' placeholder='City' className='six columns'/>
-          <input ref='state' type='text' placeholder='State' defaultValue='NY' className='two columns'/>
-          <input ref='zip' type='text' placeholder='Zip' className='four columns'/>
+          <input defaultValue={inspection.address.city} ref='city' type='text' placeholder='City' className='six columns'/>
+          <input defaultValue={inspection.address.state} ref='state' type='text' placeholder='State' defaultValue='NY' className='two columns'/>
+          <input defaultValue={inspection.address.zip} ref='zip' type='text' placeholder='Zip' className='four columns'/>
         </div>
 
         <label className="section-header">Client Type </label>
         <div className='row'>
-          <select ref='clientType' defaultValue='IN-HOUSE' className='twelve columns'>
+          <select ref='clientType' defaultValue={inspection.clientType} className='twelve columns'>
             <option>IN-HOUSE</option>
             <option>OUTSIDE</option>
           </select>
@@ -123,15 +157,15 @@ class CreateOrEditForm extends Component {
             <tbody>
               <tr>
                 <td>Proposal</td>
-                <td><input ref='proposal' type='date' className='u-full-width'/></td>
+                <td><input defaultValue={formatDate(inspection.recordsOnFile.proposal)} ref='proposal' type='date' className='u-full-width'/></td>
               </tr>
               <tr>
                 <td>Engagement Letter</td>
-                <td><input ref='engagementLetter' type='date' className='u-full-width'/></td>
+                <td><input defaultValue={formatDate(inspection.recordsOnFile.engagementLetter)} ref='engagementLetter' type='date' className='u-full-width'/></td>
               </tr>
               <tr>
                 <td>Invoice</td>
-                <td><input ref='invoice' type='date' className='u-full-width'/></td>
+                <td><input defaultValue={formatDate(inspection.recordsOnFile.invoice)} ref='invoice' type='date' className='u-full-width'/></td>
               </tr>
             </tbody>
           </table>
@@ -147,18 +181,18 @@ class CreateOrEditForm extends Component {
             <tbody>
             <tr>
               <td>Special Inspection</td>
-              <td><input ref='special1' type='date' className='u-full-width'/></td>
-              <td><input ref='special8' type='date' className='u-full-width'/></td>
+              <td><input defaultValue={formatDate(inspection.reports.specialInspection.TR1)} ref='special1' type='date' className='u-full-width'/></td>
+              <td><input defaultValue={formatDate(inspection.reports.specialInspection.TR8)} ref='special8' type='date' className='u-full-width'/></td>
             </tr>
             <tr>
               <td>Initial Report Copies</td>
-              <td><input ref='initial1' type='date' className='u-full-width'/></td>
-              <td><input ref='initial8' type='date' className='u-full-width'/></td>
+              <td><input defaultValue={formatDate(inspection.reports.initialReportCopies.TR1)} ref='initial1' type='date' className='u-full-width'/></td>
+              <td><input defaultValue={formatDate(inspection.reports.initialReportCopies.TR8)} ref='initial8' type='date' className='u-full-width'/></td>
             </tr>
             <tr>
               <td>Final Reports</td>
-              <td><input ref='final1' type='date' className='u-full-width'/></td>
-              <td><input ref='final8' type='date' className='u-full-width'/></td>
+              <td><input defaultValue={formatDate(inspection.reports.finalReports.TR1)} ref='final1' type='date' className='u-full-width'/></td>
+              <td><input defaultValue={formatDate(inspection.reports.finalReports.TR8)} ref='final8' type='date' className='u-full-width'/></td>
             </tr>
             </tbody>
           </table>
@@ -166,8 +200,8 @@ class CreateOrEditForm extends Component {
         {
           // <label className="section-header"> Progress Check-in Dates </label>
           // <div className='row'>
-          //   <input type='date' className='nine columns' style={{height: '38px'}} />
-          //   <button className='three columns add'>add</button>
+            // <input type='date' className='nine columns' style={{height: '38px'}} />
+            // <button className='three columns add'>add</button>
           // </div>
         }
 
@@ -184,16 +218,16 @@ class CreateOrEditForm extends Component {
           <tbody>
             <tr>
               <td>Date</td>
-              <td><input ref='date' type='date' className='u-full-width'/></td>
+              <td><input defaultValue={formatDate(inspection.inspectionInformation.date)} ref='date' type='date' className='u-full-width'/></td>
             </tr>
             <tr>
               <td>Inspector Name</td>
-              <td><input ref='inspector' type='text' className='u-full-width'/></td>
+              <td><input defaultValue={inspection.inspectionInformation.inspector} ref='inspector' type='text' className='u-full-width'/></td>
             </tr>
             <tr>
               <td>Results</td>
               <td>
-                <select ref='results' className='u-full-width'>
+                <select defaultValue={inspection.inspectionInformation.results} ref='results' className='u-full-width'>
                   <option value={undefined}> - </option>
                   <option value='PASS'> PASS </option>
                   <option value='FAIL'> FAIL </option>
@@ -202,11 +236,11 @@ class CreateOrEditForm extends Component {
             </tr>
             <tr>
               <td>Report Filed</td>
-              <td><input ref='filed' type='date' className='u-full-width'/></td>
+              <td><input defaultValue={formatDate(inspection.inspectionInformation.reportFiled)} ref='filed' type='date' className='u-full-width'/></td>
             </tr>
             <tr>
               <td>Signed-off Date</td>
-              <td><input ref='signOff' type='date' className='u-full-width'/></td>
+              <td><input defaultValue={formatDate(inspection.inspectionInformation.signedOffDate)} ref='signOff' type='date' className='u-full-width'/></td>
             </tr>
           </tbody>
         </table>
@@ -225,12 +259,12 @@ class CreateOrEditForm extends Component {
 
         <div className="row">
           <button
-            onClick={this.onSubmitCreate}
-            className="u-full-width submit-create-or-edit"> Submit New Inspection </button>
+            onClick={this.onSubmitEdit}
+            className="u-full-width submit-create-or-edit"> Edit Inspection </button>
         </div>
       </form>
     );
   }
 }
 
-export default CreateOrEditForm
+export default EditForm

@@ -73,3 +73,39 @@ button.submit-create-or-edit {
 button.add {
   background: #E8F5E9;
 }
+
+
+.inspection-preview {
+  border: 0.5px solid gray;
+  padding: 12px;
+  list-style: none;
+
+}
+
+li:nth-child(odd) {
+  background: #E1F5FE;
+}
+
+.no-margin-bottom {
+  margin-bottom: 0px;
+}
+
+.larger-font {
+  font-size: larger;
+}
+
+.total-number {
+  font-size: 1.5em;
+  margin-left: 6px;
+  color: tomato;
+}
+
+button.edit {
+  background: #607D8B;
+  color: white;
+  border: none;
+}
+
+.tight-lines {
+  line-height: 1.25
+}

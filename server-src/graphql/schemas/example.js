@@ -1,14 +1,14 @@
 var graphql = require ('graphql');
-
+var models = require('./../../db/models')
 
 var TodoType = new graphql.GraphQLObjectType({
-  name: 'todo',
+  name: 'Inspection',
   fields: function () {
     return {
-      id: {
+      _id: {
         type: graphql.GraphQLID
       },
-      title: {
+      updatedAt: {
         type: graphql.GraphQLString
       },
       completed: {

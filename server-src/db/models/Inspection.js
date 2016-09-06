@@ -15,7 +15,7 @@ var inspectionSchema = new Schema({
 		zip: String,
 	},
 
-	clientType: { type: String, required: true },
+	clientType: { type: String },
 
 	recordsOnFile: {
 		proposal: Date,
