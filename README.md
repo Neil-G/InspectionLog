@@ -1,3 +1,1 @@
-
-# App_Boilerplate
-v1 fullstack monolithic boilerplate
+Application for Managing Housing Inspections

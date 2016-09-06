@@ -26,6 +26,7 @@ var app = require('./app');
 
 
 // webpack configuration
+
 var compiler = webpack(config);
 
 app.use(require('webpack-dev-middleware')(compiler, {
@@ -36,15 +37,15 @@ app.use(require('webpack-dev-middleware')(compiler, {
 app.use(require('webpack-hot-middleware')(compiler));
 
 
-
-
-// serve index.html
+// SEND HTML DOC
 app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 
+
 // listen on selected port
+
 app.listen(3000, function(err) {
   if (err) {
     console.log(err);

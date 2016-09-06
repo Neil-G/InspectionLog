@@ -59,14 +59,8 @@ var pathSkipList = [
   '/favicon.ico'
 ]
 
-
-
 app.use('/graphql', graphQLHTTP({ schema: Schema, pretty: true }))
 
-// serve index.html
-// app.get('*', function(req, res) {
-//   res.sendFile(path.join(__dirname, 'index.html'));
-// });
 
 
 // app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -74,7 +68,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static('public')); // couldn't find skeleton without this
-app.use('/dist', express.static('public'));
+// app.use('/dist', express.static('public'));
 
 var models = require('./build/db/models')
 var Inspection = models.Inspection
@@ -84,6 +78,8 @@ var Inspection = models.Inspection
   // })
 
 // routes
+
+// CREATE
 app.post('/api/inspections/create', function(req, res){
   var newInspection = Inspection(req.body.newInspection)
 
@@ -93,34 +89,43 @@ app.post('/api/inspections/create', function(req, res){
   })
 });
 
+
+// COUNT
 app.get('/api/inspections/count', function(req, res){
   Inspection.count({}, function(err, count){
     res.json({ total: count })
   })
 })
 
+
+// GET BY ID
 app.get('/api/inspections/:id', function(req, res){
   Inspection.findById(req.params.id, function(err, inspection){
     res.json(inspection)
   })
 });
 
+
+// EDIT
 app.put('/api/inspections/:id', function(req, res){
   Inspection.findByIdAndUpdate(req.params.id, { $set: req.body.editedInspection}, { new: true }, function(err, inspection){
     res.json(inspection)
   })
 });
 
+
+// DELETE
 app.delete('/api/inspections/:id', function(req, res){
   res.send('OK')
 });
 
+
+// SEARCH BY TEXT
 app.get('/api/inspections/search/:text', function(req, res){
   Inspection.find({ $text: { $search: req.params.text } }, function(err, inspections){
     res.json(inspections)
   })
 });
-
 
 
 module.exports = app;
