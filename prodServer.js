@@ -6,7 +6,7 @@ var app = require('./app');
 // var models = require('./models');
 
 // logging
-// app.use(logger('combined'));
+app.use(logger('combined'));
 
 
 
