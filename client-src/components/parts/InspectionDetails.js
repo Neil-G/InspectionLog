@@ -5,9 +5,11 @@ import { Link } from 'react-router'
 require('./../../../public/custom.css')
 import moment from 'moment'
 
+
+
 function formatDate(date){
   if (date == null) return "-"
-  return moment(date).format('M/D/YY')
+  return moment(date).utcOffset(8).format('M/D/YY')
 }
 
 

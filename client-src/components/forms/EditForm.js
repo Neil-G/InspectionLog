@@ -8,7 +8,7 @@ import moment from 'moment'
 
 function formatDate(date){
   if (date == null) return "-"
-  return moment(date).format('YYYY-MM-DD')
+  return moment(date).utcOffset(8).format('YYYY-MM-DD')
 }
 
 function valueOrNull(value){
